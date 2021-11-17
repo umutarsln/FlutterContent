@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -29,11 +30,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
+  void function() {
     setState(() {
-      _counter++;
+      print("pressed");
     });
   }
 
@@ -42,31 +41,59 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Fluter Home Page"),
-        actions: <Widget>[
-          const Icon(Icons.account_circle),
-          const Icon(Icons.home),
-          const Icon(Icons.mail),
-          new Icon(Icons.phone),
+        backgroundColor: Colors.blue,
+        actions: const <Widget>[
+          Icon(Icons.account_circle),
+          Icon(Icons.home),
+          Icon(Icons.mail),
+          Icon(Icons.phone),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: const Center(
+        child: Text(
+          "Example text",
+          style: TextStyle(
+            color: Colors.black54,
+            fontSize: 25.0,
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Drawer Example'),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            ListTile(
+              title: const Text('Item 1'),
+              onTap: () {
+                print("add action");
+                Navigator.pop(context); //close after onTap
+              },
+            ),
+            ListTile(
+              title: const Text('Item 2'),
+              onTap: () {
+                print("add action2");
+                Navigator.pop(context);
+              },
             ),
           ],
         ),
-      ),
+      ), //Drawer
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: function,
+        tooltip: 'change',
+        child: const Icon(Icons.change_history),
+        backgroundColor: Colors.blue,
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        child: Container(height: 50.0),
       ),
     );
   }
