@@ -38,77 +38,88 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Fluter Home Page"),
-        backgroundColor: Colors.blue,
-        actions: const <Widget>[
-          Icon(Icons.account_circle),
-          Icon(Icons.home),
-          Icon(Icons.mail),
-          Icon(Icons.phone),
-        ],
-      ),
-      body: const Center(
-        child: Text(
-          "Example text",
-          style: TextStyle(
-            color: Colors.black54,
-            fontSize: 25.0,
+    return Material(
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text("Fluter Home Page"),
+            backgroundColor: Colors.blue,
+            actions: const <Widget>[
+              Icon(Icons.account_circle),
+              Icon(Icons.mail),
+              Icon(Icons.phone),
+            ],
+            bottom: const TabBar(
+              tabs: <Widget>[
+                Tab(
+                  icon: Icon(Icons.account_tree_sharp),
+                ),
+                Tab(
+                  icon: Icon(Icons.account_box),
+                ),
+              ],
+            ),
           ),
+          body: const TabBarView(
+            children: [
+              Icon(Icons.archive_outlined),
+              Icon(Icons.construction),
+            ],
+          ),
+          drawer: Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                  child: Text('Drawer Example'),
+                ),
+                ListTile(
+                  title: const Text('Item 1'),
+                  onTap: () {
+                    print("add action");
+                    Navigator.pop(context); //close after onTap
+                  },
+                ),
+                ListTile(
+                  title: const Text('Item 2'),
+                  onTap: () {
+                    print("add action2");
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          ), //Drawer
+          floatingActionButton: FloatingActionButton(
+            onPressed: function,
+            tooltip: 'change',
+            child: const Icon(Icons.change_history),
+            backgroundColor: Colors.blue,
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+              currentIndex: 0,
+              fixedColor: Colors.blue,
+              items: const [
+                BottomNavigationBarItem(
+                  label: "Home",
+                  icon: Icon(Icons.home),
+                ),
+                BottomNavigationBarItem(
+                  label: "Search",
+                  icon: Icon(Icons.search),
+                ),
+                BottomNavigationBarItem(
+                  label: "Account",
+                  icon: Icon(Icons.account_circle),
+                ),
+              ],
+              onTap: (int indexOfItem) {}),
         ),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Drawer Example'),
-            ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                print("add action");
-                Navigator.pop(context); //close after onTap
-              },
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                print("add action2");
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ), //Drawer
-      floatingActionButton: FloatingActionButton(
-        onPressed: function,
-        tooltip: 'change',
-        child: const Icon(Icons.change_history),
-        backgroundColor: Colors.blue,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 0,
-          fixedColor: Colors.blue,
-          items: const [
-            BottomNavigationBarItem(
-              label: "Home",
-              icon: Icon(Icons.home),
-            ),
-            BottomNavigationBarItem(
-              label: "Search",
-              icon: Icon(Icons.search),
-            ),
-            BottomNavigationBarItem(
-              label: "Account",
-              icon: Icon(Icons.account_circle),
-            ),
-          ],
-          onTap: (int indexOfItem) {}),
     );
   }
 }
