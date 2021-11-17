@@ -50,6 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: const Center(
+        //widthFactor: ,
+        //heightFactor: ,
         child: Text(
           "Example text",
           style: TextStyle(
