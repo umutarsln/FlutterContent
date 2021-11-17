@@ -91,10 +91,24 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.change_history),
         backgroundColor: Colors.blue,
       ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        child: Container(height: 50.0),
-      ),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          fixedColor: Colors.blue,
+          items: const [
+            BottomNavigationBarItem(
+              label: "Home",
+              icon: Icon(Icons.home),
+            ),
+            BottomNavigationBarItem(
+              label: "Search",
+              icon: Icon(Icons.search),
+            ),
+            BottomNavigationBarItem(
+              label: "Account",
+              icon: Icon(Icons.account_circle),
+            ),
+          ],
+          onTap: (int indexOfItem) {}),
     );
   }
 }
