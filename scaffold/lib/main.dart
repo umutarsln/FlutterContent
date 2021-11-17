@@ -61,16 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          body: const Center(
-            //widthFactor: ,
-            //heightFactor: ,
-            child: Text(
-              "Example text",
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 25.0,
-              ),
-            ),
+          body: const TabBarView(
+            children: [
+              Icon(Icons.archive_outlined),
+              Icon(Icons.construction),
+            ],
           ),
           drawer: Drawer(
             child: ListView(
