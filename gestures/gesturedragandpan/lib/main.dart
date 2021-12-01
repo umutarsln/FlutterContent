@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
+void main() => runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(
         body: Padding(
 //       padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-            padding: const EdgeInsets.all(0),
+            padding: EdgeInsets.all(0),
             child: Page()))));
 
 class Page extends StatefulWidget {
+  const Page({Key? key}) : super(key: key);
+
   @override
   PageState createState() => PageState();
 }
