@@ -26,6 +26,30 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   bool _lightIsOn = false;
 
+  showAlertDialog(BuildContext context) {
+    Widget okButton = TextButton(
+      child: const Text("OK"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: const Text("Message"),
+      content: const Text("You pushed to gesture too long."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +67,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
             ),
             GestureDetector(
+              onLongPress: () {
+                setState(() {
+                  print('onLongPress');
+                  Feedback.forLongPress(context);
+                  showAlertDialog(context);
+                });
+              },
               onTap: () {
                 setState(() {
                   // Toggle light when tapped.
